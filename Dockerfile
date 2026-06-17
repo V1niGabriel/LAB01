@@ -11,4 +11,4 @@ COPY tests/ ./tests/
 
 ENV PYTHONPATH=/app
 
-CMD  [" pytest " , " tests /" , " - v "]
+CMD  ["pytest", "tests/", "-v"]
