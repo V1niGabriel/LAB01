@@ -90,11 +90,11 @@ jobs:
 
       - name: Run all tests with coverage
         run: |
-          pytest tests/ -v --cov=src --cov-report=term --cov-report=html --cov-report=xml
+          pytest tests/ -v --cov=src --cov-report=term --cov-report=html --cov-report=xml | tee pytest_output.txt
 
       - name: Check coverage threshold (80 percent)
         run: |
-          COVERAGE=$(grep -oP 'TOTAL.*\s(\d+)%' coverage.xml | grep -oP '\d+')
+          COVERAGE=$(grep -oP 'TOTAL.*\s(\d+)%' pytest_output.txt | grep -oP '\d+')
           if [ "$COVERAGE" -lt 80 ]; then
             echo "Coverage $COVERAGE% is below 80% threshold"
             exit 1
