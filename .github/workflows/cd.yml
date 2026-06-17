@@ -5,6 +5,9 @@ on:
     tags:
       - 'v*'
 
+permissions:
+  contents: write
+
 env:
   DOCKER_IMAGE: ${{ secrets.DOCKER_HUB_USERNAME }}/meu-pipeline
 
